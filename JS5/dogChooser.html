@@ -1,0 +1,81 @@
+<head>
+    <style>
+        body{
+            text-align: center;
+        }
+        div.dogpic{
+            box-sizing: border-box;
+            height: 450px;
+            width: 300px;
+            float: left;
+            background-color: red;
+            border: 1px solid black;
+        }
+        div.favoriet{
+            width: 300px;
+            height: 150px;
+            background-color: blue;
+            src: format();
+        }
+        img{
+            height: 300px;
+            width: 300px;
+            border: 0px;
+        }
+        #pics{
+            width: 900px;
+            height: 1350px;
+            border: solid 1px black;
+            font-size: 0px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="Chooser">Dog Chooser</h1>
+
+    <div id="pics">
+       
+
+    </div>
+</body>
+
+
+<!--<script src="dogChooser.js"></script>-->
+
+<script>
+
+pics = document.getElementById("pics");
+dogPicHolderMaker();
+dogPicCreator();
+
+function dogPicHolderMaker(){ 
+    for(var i =0; i<9;i++){
+        dogPicHolder = document.createElement("div");
+        dogPicHolder.id = "dogpicholder" + i;
+        dogPicHolder.className = "dogpic";
+        pics.appendChild(dogPicHolder);
+    }
+}
+function dogPicCreator(){
+    dogPicHolders = document.getElementsByClassName("dogpic");
+    for(var i=0; i< dogPicHolders.length;i++){
+        favoriet = document.createElement("div");
+        favoriet.className ="favoriet";
+        favoriet.id = "favoriet_" + (i+1);
+        hondjePlaatje = document.createElement("img");
+        hondjePlaatje.src = "../hondJS/hond"+(i+1)+".jfif";
+        hondjePlaatje.id = (i+1)
+        hondjePlaatje.addEventListener("click",function(){ maakFavoriet(this.id)});
+        dogPicHolders[i].appendChild(favoriet);
+        dogPicHolders[i].appendChild(hondjePlaatje);
+    }   
+}
+
+function maakFavoriet(id){
+    console.log("Maak mij Favoriet!!!! hondje"+ id);
+    favoriet = document.getElementById("favoriet_"+ id);
+    favoriet.style.backgroundImage = "URL(https://tse3.mm.bing.net/th?id=OIP.j-pDlXFQjjn73D5y4D7baQHaHT&pid=Api)"
+}
+
+</script>
