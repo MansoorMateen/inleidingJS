@@ -1,4 +1,3 @@
-document.getElementById("shuffle").style.textAlign="center";
 var plaatjes = document.getElementsByTagName("img");
 var nummers = []
 var random = 0;

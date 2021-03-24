@@ -1,0 +1,139 @@
+<head>
+    <style>
+        body{ text-align: center;}
+        html{
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            color: black;
+            cursor: pointer;
+            
+            
+        }
+        #pics{
+            width: 700px;
+            height: 1000px;
+            font-size: 0px;
+            margin: auto;
+        }
+        div{ color: black;}
+        
+    </style>
+</head>
+<body>
+    <h1 id="memory">Dog memory</h1>
+
+    <div id="pics">
+        <div>
+        <img src="../hondJS/heart.jpg" id="1" >
+        <img src="../hondJS/heart.jpg" id="2" >
+        <img src="../hondJS/heart.jpg" id="3" >
+        <img src="../hondJS/heart.jpg" id="4" >
+        <img src="../hondJS/heart.jpg" id="5" >
+        <img src="../hondJS/heart.jpg" id="6" >
+        <img src="../hondJS/heart.jpg" id="7" >
+        <img src="../hondJS/heart.jpg" id="8" >
+        <img src="../hondJS/heart.jpg" id="9" >
+        <img src="../hondJS/heart.jpg" id="10">
+        <img src="../hondJS/heart.jpg" id="11">
+        <img src="../hondJS/heart.jpg" id="12">
+        <img src="../hondJS/heart.jpg" id="13">
+        <img src="../hondJS/heart.jpg" id="14">
+        <img src="../hondJS/heart.jpg" id="15">
+        <img src="../hondJS/heart.jpg" id="16">
+        <img src="../hondJS/heart.jpg" id="17">
+        <img src="../hondJS/heart.jpg" id="18">
+        
+    </div>
+</body>
+
+
+<!--<script src="memory.js"></script>-->
+
+<script>
+
+const plaatjes = document.getElementsByTagName("img");
+const arrayOne = [...plaatjes]; 
+var nummers = [];
+var random = 0;
+var klik = [];
+var geklik =-1;
+var punten =0
+var beurt = 0;
+var gelijk = false;
+
+while (nummers.length < 18 ){
+    random =Math.floor(Math.random()*18 + 1);
+    if (nummers.lastIndexOf(random)== -1){
+        nummers.push(random);
+    }
+   
+}
+
+ random=0;
+
+/*
+const pictureElements = document.querySelectorAll("img");
+for (const value of pictureElements){
+    value.src = "../hondJS/hond"+Math.round(nummers[random]/2)+".jfif";
+  
+    value.addEventListener("click", test);
+    random++;
+}
+*/
+//console.log(pictureElements);
+//HTML-collection (dynamische, API) versus NodeList versus reguliere Array (statisch tezij expliciet aanpassen)
+// Rest operator (...) || Spread (...) operator 
+   //...[a, b, c] => [a, b, c]
+console.log(arrayOne);
+for (const plaatje in arrayOne){
+   // 
+   plaatjes[plaatje].addEventListener('click', function(){
+onDogClicked(this.id);
+    });
+    random++;
+   
+}
+
+function onDogClicked(e){
+    console.log(e);
+    if (plaatjes[e-1].src = "../hondJS/heart.jpg"){
+    geklik++;
+    plaatjes[e-1].src = "../hondJS/hond"+Math.round(nummers[e-1]/2)+".jfif";
+    klik[geklik] = plaatjes[e-1];     
+    //klik[geklik].src = [plaatjes[e-1]];
+    }
+   
+
+    
+    console.log(geklik);
+    console.log(plaatjes[geklik]);
+    if (geklik >= 1){
+        setTimeout(timerSet,1000);
+       }
+
+    function timerSet(){
+        if (klik[1].src == klik[0].src){
+            
+            punten++; 
+            window.alert(punten);
+            gelijk = true;
+            }
+    
+            else{ 
+                klik[1].src ="../hondJS/heart.jpg" ;
+                klik[0].src ="../hondJS/heart.jpg" ;
+            
+        }
+            beurt++;
+            geklik=-1;
+        }
+    }
+
+
+</script>
